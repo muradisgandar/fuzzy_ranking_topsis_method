@@ -37,11 +37,13 @@ d_plus = np.sqrt((age - a_plus[0])**2+(market_value - a_plus[1])**2+(page_views-
 d_minus = np.sqrt((age - a_minus[0])**2+(market_value - a_minus[1])**2+(page_views-a_minus[2])**2+(fpl_points - a_minus[3])**2)
 ranking = d_minus/(d_plus+d_minus)
 
-workbook = xlsxwriter.Workbook('results1.xlsx')
+workbook = xlsxwriter.Workbook('results.xlsx')
 worksheet = workbook.add_worksheet()
+worksheet.write('C1', 'Footballer_ranking')
 worksheet.write('B1', 'Footballer_club')
 worksheet.write('A1', 'Footballer_name')
 for i in range(n):
     worksheet.write(i+1, 0, name[i])
-    worksheet.write(i+1, 1, ranking[i])
+    worksheet.write(i+1, 1, club[i])
+    worksheet.write(i+1, 2, ranking[i])
 workbook.close()
